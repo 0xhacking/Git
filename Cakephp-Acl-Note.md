@@ -53,8 +53,8 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
     class User extends AppModel
     {
         public $name = 'User';
-        public $actsAs = array('Acl' => array('type' => 'requester'));</pre>
-            function parentNode() { return "Users"; }
+        *public $actsAs = array('Acl' => array('type' => 'requester'));*
+        function parentNode() { return "Users"; }
         ...
     }
     ?>
@@ -90,8 +90,8 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
     <?php
     class Post extends AppModel
     {
-        var $name = 'Product';
-        var $actsAs = array('Acl' => array('type' => 'controlled'));
+        public $name = 'Product';
+        *public $actsAs = array('Acl' => array('type' => 'controlled'));*
         function parentNode() { return 'Post';}
         ...
     }
@@ -104,7 +104,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
     class PostsController extends AppController {
 
         public $name = 'Posts';
-        public $components = array('Acl');
+        *public $components = array('Acl');*
         ...
     ?>
 
@@ -115,8 +115,8 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
     function add() {
         if ($this->Product->save($this->data)) {
 
-            $this->Acl->allow( 'Users', array('model'=>'Product', 'foreign_key' => $this->Product->id), 'read');
-            $this->Acl->allow( array('model'=>'User', 'foreign_key' => $this->Session->read('user_id') ), array('model'=>'Product', 'foreign_key' => $this->Product->id));
+            *$this->Acl->allow( 'Users', array('model'=>'Product', 'foreign_key' => $this->Product->id), 'read');*
+            *$this->Acl->allow( array('model'=>'User', 'foreign_key' => $this->Session->read('user_id') ), array('model'=>'Product', 'foreign_key' => $this->Product->id));*
 
             $this->Session->setFlash(__('The product has been saved', true));
             $this->redirect(array('action' => 'index'));
@@ -136,7 +136,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
 
     <?php
     function view($id = null) {
-        if ($this->Acl->check( array('model' => 'User', 'foreign_key' => (int) $this->Session-> read('user_id')),array('model' => 'Product', 'foreign_key' => $product['Product']['id']), 'read')) {
+        *if ($this->Acl->check( array('model' => 'User', 'foreign_key' => (int) $this->Session-> read('user_id')),array('model' => 'Product', 'foreign_key' => $product['Product']['id']), 'read')) {*
             $this->set('product', $product);
 
         } else {
@@ -151,7 +151,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
 
     <?php
     function edit($id = null) {  
-            if (@$this->Acl->check( array('model' => 'User', 'foreign_key' => (int) $this->Session->read('user_id')), array('model' => 'Product', 'foreign_key' => $product['Product']['id']), 'update')) {
+            *if (@$this->Acl->check( array('model' => 'User', 'foreign_key' => (int) $this->Session->read('user_id')), array('model' => 'Product', 'foreign_key' => $product['Product']['id']), 'update')) {*
 
                 if ($this->Product->save($this->data)) {
                     $this->Session->setFlash(__('The product has been saved', true));
@@ -175,8 +175,8 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
 
     <?php
      function delete($id = null) {
-            if (@$this->Acl->check( array('model' => 'User', 'foreign_key' => (int) $this->Session-> read('user_id')),
-                array('model' => 'Product', 'foreign_key' => $product['Product']['id']), 'delete')) {
+            *if (@$this->Acl->check( array('model' => 'User', 'foreign_key' => (int) $this->Session-> read('user_id')),
+                array('model' => 'Product', 'foreign_key' => $product['Product']['id']), 'delete')) {*
 
                     if ($this->Product->delete($id)) {
                         $this->Session->setFlash(__('Product deleted', true));
