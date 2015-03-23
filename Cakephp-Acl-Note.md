@@ -2,10 +2,10 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
 
 测试环境: CakePHP v2.5.1
 
-# 1 在 /var/www/app 的根目录下导入 DbAcl:
+### 1 在 /var/www/app 的根目录下导入 DbAcl:
 ------------------------------------------
 
-### $ cake schema create DbAcl
+###### $ cake schema create DbAcl
 
 这里就是把 ``/var/www/app/Model/Config/Schema/db_acl.php`` 将 SQL 语句导入数据库。
 
@@ -46,7 +46,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
 
 
 
-# 2 User Model 下添加如下代码：
+### 2 User Model 下添加如下代码：
 -------------------------------
 
     <?php
@@ -59,7 +59,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
     }
     ?>
 
-### $ cake acl view aro 
+###### $ cake acl view aro 
 
     root@linux:/var/www/app# cake acl view aro
     Failed loading /usr/lib/php5/20090626/xcache.so: /usr/lib/php5/20090626/xcache.so: cannot open shared object file: No such file or directory
@@ -84,7 +84,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
     [12] User.31
     ---------------------------------------------------------------
 
-#3 Post Model 添加 ACOS:
+###3 Post Model 添加 ACOS:
 --------------------------
 
     <?php
@@ -97,7 +97,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
     }
     ?>
 
-#4 PostsController 添加 ACOS:
+###4 PostsController 添加 ACOS:
 ------------------------------
 
     <?php
@@ -108,7 +108,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
         ...
     ?>
 
-#5 add():
+###5 add():
 --------
 
     <?php
@@ -131,7 +131,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
     }
     ?>
 
-#6 view():
+###6 view():
 ---------
 
     <?php
@@ -146,7 +146,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
     }
     ?>
 
-#7 edit():
+###7 edit():
 ---------
 
     <?php
@@ -170,7 +170,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
         }
     ?>
 
-#8 delete():
+###8 delete():
 -----------
 
     <?php
