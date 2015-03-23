@@ -2,15 +2,15 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
 
 测试环境: CakePHP v2.5.1
 
-#1 在 /var/www/app 的根目录下导入 DbAcl:
-=======================================
+# 1 在 /var/www/app 的根目录下导入 DbAcl:
+==========================================
 
-*** $ cake schema create DbAcl
+### $ cake schema create DbAcl
 
-这里就是把 /var/www/app/Model/Config/Schema/db_acl.php 将 SQL 语句导入数据库。
+这里就是把 ``/var/www/app/Model/Config/Schema/db_acl.php`` 将 SQL 语句导入数据库。
 
 
-root@linux:/var/www/app# cake schema create DbAcl
+``root@linux:/var/www/app# cake schema create DbAcl
 Failed loading /usr/lib/php5/20090626/xcache.so:  /usr/lib/php5/20090626/xcache.so: cannot open shared object file: No such file or directory
 
 Welcome to CakePHP v2.5.1 Console
@@ -42,14 +42,14 @@ Creating table(s).
 acos updated.
 aros updated.
 aros_acos updated.
-End create.
+End create.``
 
 
 
-#2 User Model 下添加如下代码：
-============================
+# 2 User Model 下添加如下代码：
+===============================
 
-<?php
+``<?php
 class User extends AppModel
 {
     public $name = 'User';
@@ -57,11 +57,11 @@ class User extends AppModel
         function parentNode() { return "Users"; }
     ...
 }
-?>;
+?>``
 
-*** $ cake acl view aro 
+### $ cake acl view aro 
 
-root@linux:/var/www/app# cake acl view aro
+``root@linux:/var/www/app# cake acl view aro
 Failed loading /usr/lib/php5/20090626/xcache.so: /usr/lib/php5/20090626/xcache.so: cannot open shared object file: No such file or directory
 
 Welcome to CakePHP v2.5.1 Console
@@ -82,12 +82,12 @@ Aro tree:
 [10] Users
 [11] User.30
 [12] User.31
----------------------------------------------------------------
+---------------------------------------------------------------``
 
 #3 Post Model 添加 ACOS:
-========================
+==========================
 
-<?php
+``<?php
 class Post extends AppModel
 {
     var $name = 'Product';
@@ -95,22 +95,23 @@ class Post extends AppModel
     function parentNode() { return 'Post';}
     ...
 }
-?>
+?>``
 
 #4 PostsController 添加 ACOS:
-============================
+==============================
 
-<?php
+``<?php
 class PostsController extends AppController {
 
     public $name = 'Posts';
     public $components = array('Acl');
     ...
-?>
+?>``
 
 #5 add():
 ========
-<?php
+
+``<?php
 function add() {
     if ($this->Product->save($this->data)) {
 
@@ -128,12 +129,12 @@ function add() {
     $dealers = $this->Product->Dealer->find('list');
     $this->set(compact('dealers'));
 }
-?>
+?>``
 
 #6 view():
 =========
 
-<?php
+``<?php
 function view($id = null) {
     if ($this->Acl->check( array('model' => 'User', 'foreign_key' => (int) $this->Session-> read('user_id')),array('model' => 'Product', 'foreign_key' => $product['Product']['id']), 'read')) {
         $this->set('product', $product);
@@ -143,12 +144,12 @@ function view($id = null) {
         $this->redirect(array('action'=>'index'));
     }
 }
-?>
+?>``
 
 #7 edit():
 =========
 
-<?php
+``<?php
 function edit($id = null) {  
         if (@$this->Acl->check( array('model' => 'User', 'foreign_key' => (int) $this->Session->read('user_id')), array('model' => 'Product', 'foreign_key' => $product['Product']['id']), 'update')) {
 
@@ -167,12 +168,12 @@ function edit($id = null) {
         }
         $this->set('product', $product);
     }
-?>
+?>``
 
 #8 delete():
 ===========
 
-<?php
+``<?php
  function delete($id = null) {
         if (@$this->Acl->check( array('model' => 'User', 'foreign_key' => (int) $this->Session-> read('user_id')),
             array('model' => 'Product', 'foreign_key' => $product['Product']['id']), 'delete')) {
@@ -190,4 +191,4 @@ function edit($id = null) {
                 $this->redirect(array('action'=>'index'));
             }
 }
-?>
+?>``
