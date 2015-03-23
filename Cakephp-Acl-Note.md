@@ -3,7 +3,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
 测试环境: CakePHP v2.5.1
 
 # 1 在 /var/www/app 的根目录下导入 DbAcl:
-==========================================
+------------------------------------------
 
 ### $ cake schema create DbAcl
 
@@ -47,7 +47,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
 
 
 # 2 User Model 下添加如下代码：
-===============================
+-------------------------------
 
     <?php
     class User extends AppModel
@@ -85,7 +85,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
     ---------------------------------------------------------------
 
 #3 Post Model 添加 ACOS:
-==========================
+--------------------------
 
     <?php
     class Post extends AppModel
@@ -98,7 +98,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
     ?>
 
 #4 PostsController 添加 ACOS:
-==============================
+------------------------------
 
     <?php
     class PostsController extends AppController {
@@ -109,7 +109,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
     ?>
 
 #5 add():
-========
+--------
 
     <?php
     function add() {
@@ -132,7 +132,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
     ?>
 
 #6 view():
-=========
+---------
 
     <?php
     function view($id = null) {
@@ -147,7 +147,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
     ?>
 
 #7 edit():
-=========
+---------
 
     <?php
     function edit($id = null) {  
@@ -171,7 +171,7 @@ Cakephp Acl（访问控制列表对用户的权限进行控制）
     ?>
 
 #8 delete():
-===========
+-----------
 
     <?php
      function delete($id = null) {
