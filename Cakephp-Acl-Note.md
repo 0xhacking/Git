@@ -3,7 +3,6 @@
 **测试环境: CakePHP v2.5.1**
 
 ### 1 在 /var/www/app 的根目录下导入 DbAcl:
-------------------------------------------
 
 ###### $ cake schema create DbAcl
 
@@ -47,7 +46,6 @@
 
 
 ### 2 User Model 下添加如下代码：
--------------------------------
 
     <?php
     class User extends AppModel
@@ -85,7 +83,6 @@
     ---------------------------------------------------------------
 
 ###3 Post Model 添加 ACOS:
---------------------------
 
     <?php
     class Post extends AppModel
@@ -98,7 +95,6 @@
     ?>
 
 ###4 PostsController 添加 ACOS:
-------------------------------
 
     <?php
     class PostsController extends AppController {
@@ -132,7 +128,6 @@
     ?>
 
 ###6 view():
----------
 
     <?php
     function view($id = null) {
@@ -147,7 +142,6 @@
     ?>
 
 ###7 edit():
----------
 
     <?php
     function edit($id = null) {  
@@ -171,7 +165,6 @@
     ?>
 
 ###8 delete():
------------
 
     <?php
      function delete($id = null) {
